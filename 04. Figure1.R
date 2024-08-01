@@ -7,23 +7,29 @@ df <- readRDS("data/finalData.rds")
 
 one <- df |>
   filter(sex == "Male") |>
-  ggplot(aes(x = allCancer, y = age)) +
-  geom_boxplot(fill='#A4A4A4', color="black") +
+  ggplot(aes(x = allCancer, y = age, fill = allCancer)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("#31726D", "#7EA5B0")) +
   ggtitle("Men") +
   xlab("") +
-  ylab("Age at interview") +
-  theme(plot.title = element_text(hjust = 0.5))
+  ylab("Age at interview")  +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = "none")
 
-
+one
 two <- df |>
   filter(sex == "Female") |>
-  ggplot(aes(x = allCancer, y = age)) +
-  geom_boxplot(fill='#A4A4A4', color="black") +
-  ggtitle("Women") +
+  ggplot(aes(x = allCancer, y = age, fill = allCancer)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("#31726D", "#7EA5B0")) +
+  ggtitle("Men") +
   xlab("") +
-  ylab(label = "Age at interview") +
-  theme(plot.title = element_text(hjust = 0.5))
+  ylab("Age at interview")  +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position = "none")
 
+
+two
 
 png(filename = "output/Figure1.png")
 ggarrange(one, two, nrow = 1)
