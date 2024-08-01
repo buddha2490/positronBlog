@@ -119,14 +119,14 @@ array orig (*) BLADDCAN_A BLOODCAN_A
     STOMACAN_A THROACAN_A THYROCAN_A
     UTERUCAN_A HDNCKCAN_A COLRCCAN_A OTHERCANP_A;
 
-array new (*) bladder blood bone brain breast cervix
+array derived (*) bladder blood bone brain breast cervix
               esoph gallbladder larynx leukemia
               liver lung lymphoma melanoma oral ovary
               pancreas prostate stomach throat
               thyroid uterine hodgkins crc other;
 do i = 1 to dim(orig);
-    if orig{i} = 1 then new{i} = 1;
-    else new{i} = 0;
+    if orig{i} = 1 then derived{i} = 1;
+    else derived{i} = 0;
 end;
 
 

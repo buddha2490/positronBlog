@@ -1,7 +1,6 @@
 library(dplyr)
 library(haven)
-library(gt)
-
+library(flextable)
 
 
 # read_sas does not import the formats
