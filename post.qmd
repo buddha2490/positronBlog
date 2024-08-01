@@ -1,0 +1,42 @@
+---
+title: "Positron and the Altair SLC"
+author: "Brian Carter"
+format: docx
+editor: visual
+---
+
+## Introduction
+
+In an earlier post, I argued that SAS is a major tool utilized by the data science community, especially in industries such as Pharma or Finance. R and Python are not rare in these industries, but SAS is still required. Users have to deal with multiple IDEs, stuck on SAS for some things, move to Rstudio for others. The only company that offers a full integration is SAS Viya, but that's just more SAS. Wouldn't it be nice if there was an alternative to SAS Viya that allowed data scientists access to the tools they need within a single IDE?
+
+I found a little Easter egg in my initial review of Positron, something that hasn't gotten any attention but may have huge consequences across industries. Positron supports the integration of the wide-variety of VS Code extensions, one of which is the SAS Language Compiler available from Altair.
+
+## SAS in Data Analysis
+
+SAS is the industry standard for data management and analysis with wider use than any open source tools. The SAS ecosystem is deeply embedded in many industries and my consulting group works closely with companies who are migrating from SAS to R and Python. One of the challenges I face is from SAS users who argue that SAS is indeed the best tool for certain data management tasks.
+
+As much as I love R and Python, I have come to agree that SAS is the superior platform for managing tabular data. SAS provides its customers with Viya, the only platform that integrates SAS, R, and Python into a single IDE that allows users to choose the best tool for their project. Unfortunately, SAS Viya still locks users into an proprietary ecosystems with an arguably clunky interface.
+
+## Altair SLC
+
+The SAS Language Compiler (SLC) from Altair is a alternative that allows users to develop and run SAS code without buying into the SAS ecosystem. I've been using it for several months now and it is a remarkable system. It can read and write .sas7bdat files, execute the entirety of the DATA step, and all the major procedures. Altair acknowledges that their compiler is only about 90% complete and I have noticed a few procedure options missing here and there. But my overall impression is that this is a viable alternative to SAS for most of my clients.
+
+## Enter Positron
+
+In the multilingual environment of data science professionals often find themselves juggling between R and Python on a daily basis. Recognizing this need for a more integrated workflow, Posit has introduced a variety of tools that seamlessly incorporate both languages into single environments. Their latest offering is the open-beta release of the Positron Integrated Development Environment (IDE). Positron, built on the foundation of the widely-used VS Code, provides first-class support for both R and Python, promising a more seamless integration between the two.
+
+## Positron and SLC
+
+I recently integrated the new Positron with the Altair SLC and it was surprisingly easy. Since Positron is based on VSCode, it has access to all the extensions offered for VSCode. I checked and saw the Altair offers the SLC. In a perfect world, everything would just work... and it does!
+
+## Integrating Positron with the Altair SLC
+
+Configuring this integration is surprisingly easy. You will first need to download the the SLC from Altair. Altair offers several licensing options, but there is a free community edition for evaluation and that is what I have been using. Once activated, you can search for SLC in the Positron Extension tab and click "install".  Once installed, you will need to "Start" the SLC session in Positron.  Once the session is started, you can create a new SLC Notebook file and start writing SAS code.
+
+![](img/extensions.png)
+
+## Example workflow
+
+Before I wrote this post, I wanted to evaluate how this would work in a real-world workflow.  I spent most of my career as an epidemiologist, so I decided to download a public dataset from the National Health Interview Survey (NHIS) to demonstrate how one would use SAS and R within a single project.  
+
+[The National Health Interview Survey](https://www.cdc.gov/nchs/nhis/2023nhis.htm) is a nationally representative sample of households and assesses demographics, health behaviors, and prevalent diseases.  It has been collected annually since 1957 and is a valuable resource for epidemiologists.  The data are provided in [ASCII](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2023/adult23.zip) and [CSV](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NHIS/2023/adult23csv.zip) formats.  Each file includes a [SAS Program](https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Program_Code/NHIS/2023/Adult.sas) for importing these data into SAS that includes formats and labels for all variables.
